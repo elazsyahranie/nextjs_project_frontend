@@ -63,7 +63,10 @@ export default function Login() {
                 that for you!
               </p>
               <form className="w-100">
-                <div class="mb-5">
+                <div
+                  className={`d-flex justify-content-start mb-5 ${styles.bottomBorder}`}
+                >
+                  <img src="/login/email.png" className="my-auto"></img>
                   <input
                     type="email"
                     class={`form-control py-2 ${styles.myFormControl}`}
@@ -71,28 +74,24 @@ export default function Login() {
                     placeholder="Enter your email"
                   ></input>
                 </div>
-                <div class="mb-5">
+                <div
+                  className={`d-flex justify-content-start mb-5 ${styles.bottomBorder}`}
+                >
+                  <img src="/login/password.png" className="my-auto"></img>
                   <input
                     type="password"
                     class={`form-control py-2 ${styles.myFormControl}`}
                     placeholder="Enter your password"
                   ></input>
                 </div>
-                <div class="mb-3 form-check">
-                  <input
-                    type="checkbox"
-                    class="form-check-input"
-                    id="exampleCheck1"
-                  ></input>
-                  <label class="form-check-label" for="exampleCheck1">
-                    Check me out
-                  </label>
-                </div>
-                <button type="submit" class="btn btn-primary">
+                <button
+                  type="submit"
+                  className={`btn  ${styles.btnLogin} w-100`}
+                >
                   Submit
                 </button>
               </form>
-              <span className="d-block">
+              <span className="d-block my-5 mx-auto">
                 Don't have an account? Let's sign up
               </span>
             </div>
