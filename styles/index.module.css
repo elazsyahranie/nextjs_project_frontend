@@ -1,3 +1,5 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
+
 .theFooter {
   background-color: #6379f4;
 }
@@ -6,6 +8,34 @@
   background-color: white;
 }
 
+.whiteText {
+  color: white;
+}
+
+.whiteBackgroundWithBorderRadius {
+  background-color: white;
+  border-radius: 25px;
+}
+
+.blueBackgroundWithBorderRadius {
+  background-color: #6379f4;
+  border-radius: 25px;
+}
+
+.myTransparentButton {
+  border: 1px solid #ffffff;
+  color: white;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.2);
+  width: 162px;
+}
+
 .color {
   color: #f1f1f1;
 }
+/* 
+.standardButton {
+  width: 28px;
+  height: 28px; 
+  color: #21b145;
+} */
