@@ -10,6 +10,10 @@ module.exports = {
         source: "/login", // pengganti path pada react js
         destination: "/auth/login", // lokasi path
       },
+      {
+        source: "/register", // pengganti path pada react js
+        destination: "/auth/register", // lokasi path
+      },
     ];
   },
 };
