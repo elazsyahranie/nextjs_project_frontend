@@ -4,3 +4,32 @@
   padding: 15px;
   margin: 20px auto;
 }
+
+.blueBackground {
+  background-color: #6379f4;
+}
+
+.whiteText {
+  color: white;
+}
+
+.myLeftPadding {
+  padding-left: 140px;
+}
+
+.paragraphRightPadding {
+  padding-right: 120px;
+}
+
+.leftContentInnerPadding {
+  padding-top: 9rem;
+  padding-bottom: 9rem;
+  padding-left: 2rem;
+}
+
+.myFormControl {
+  border: none;
+  border-bottom: 1px solid rgba(169, 169, 169, 0.6);
+  background: none;
+  border-radius: 0px;
+}

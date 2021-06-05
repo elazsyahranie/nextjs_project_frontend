@@ -7,25 +7,25 @@ import { authPage } from "../middleware/authorizationPage";
 import Footer from "../components/module/Footer";
 
 // Proses getData dilakukan di server
-export async function getServerSideProps(context) {
-  const data = await authPage(context); // Untuk halaman yang harus login dulu (katanya)
-  console.log(data);
-  const res = await axiosApiIntances
-    .get("users")
-    .then((res) => {
-      console.log(res.data);
-      return res.data; // return kalau hanya satu baris
-    })
-    .catch((err) => {
-      console.log(err);
-      return [];
-    });
+// export async function getServerSideProps(context) {
+//   const data = await authPage(context); // Untuk halaman yang harus login dulu (katanya)
+//   console.log(data);
+//   const res = await axiosApiIntances
+//     .get("users")
+//     .then((res) => {
+//       console.log(res.data);
+//       return res.data; // return kalau hanya satu baris
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       return [];
+//     });
 
-  // Menjembatani 'getServerSideProps' dan....
-  return {
-    props: { users: res, userLogin: data }, // will be passed to the page component as props
-  };
-}
+//   // Menjembatani 'getServerSideProps' dan....
+//   return {
+//     props: { users: res, userLogin: data }, // will be passed to the page component as props
+//   };
+// }
 
 // Data yang dilempar akan masuk ke props
 export default function Home(props) {
