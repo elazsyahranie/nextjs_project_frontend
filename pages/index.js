@@ -38,10 +38,10 @@ export default function Home(props) {
         <div className={`${styles.whiteBackground}`}>
           <Navbar />
         </div>
-        <div className="container py-5">
-          <div className="row justify-content-between">
+        <div className={`container py-5`}>
+          <div className={`row justify-content-between`}>
             <div
-              className={`${styles.whiteBackgroundWithBorderRadius} col-lg-3 col-md-3 col-sm-3 col-xs-12`}
+              className={`${styles.whiteBackgroundWithBorderRadius} col-lg-3 col-md-3 col-sm-3 col-xs-12  ${styles.homeContentMinHeight}`}
             >
               <div className="row py-5 px-4 w-100">
                 <div>
@@ -63,12 +63,12 @@ export default function Home(props) {
               </div>
               <div className="row pb-5 px-4 w-100">
                 <div>
-                  <img src="/homeOrIndex/grid.png"></img>
+                  <img src="/homeOrIndex/group40.png"></img>
                   <span className="ms-5">Profile</span>
                 </div>
               </div>
             </div>
-            <div className={`col-lg-8 col-md-8 col-sm-8 col-xs-12`}>
+            <div className={`col-lg-9 col-md-9 col-sm-9 col-xs-12`}>
               <div className={`${styles.blueBackgroundWithBorderRadius}`}>
                 <div className="row justify-content-between p-4">
                   <div
@@ -96,29 +96,60 @@ export default function Home(props) {
                   </div>
                 </div>
               </div>
-              <div className="row justify-content-between p-4">
-                <div className="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                  <div className={`${styles.whiteBackgroundWithBorderRadius}`}>
-                    <img src="/homeOrIndex/in2.png"></img>
-                    {/* <span className="downArrow"></span>
-                    <style jsx>{`
-                      .downArrow::before {
-                        content: "\f063";
-                        font-family: "Font Awesome 5 Free";
-                        font-weight: 900;
-                        font-size: 2rem;
-                        color: #21b145;
-                      }
-                    `}</style> */}
-                    {/* <FontAwesomeIcon
-                      icon={faArrowDown}
-                      color="black"
-                      size="1px"
-                    /> */}
+              <div className="row mt-4">
+                <div className={`col-lg-7 col-md-7 col-sm-7 col-xs-7 p-4 `}>
+                  <div
+                    className={`row p-4 ${styles.whiteBackgroundWithBorderRadius}`}
+                  >
+                    <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                      <img src="/homeOrIndex/in2.png"></img>
+                      <span className="d-block">Income</span>
+                      <h5>Rp. 2.120.000</h5>
+                    </div>
+                    <div className="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                      <img src="/homeOrIndex/out2.png"></img>
+                      <span className="d-block ">Expense</span>
+                      <h5>Rp. 1.560.000</h5>
+                    </div>
                   </div>
                 </div>
-                <div className="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                  <h3>Hello 2</h3>
+                <div className="col-lg-5 col-md-5 col-sm-5 col-xs-4 p-4">
+                  <div
+                    className={`row px-2 py-4 ${styles.whiteBackgroundWithBorderRadius}`}
+                  >
+                    <div className="d-flex justify-content-between h-100">
+                      <img src="/homeOrIndex/1.png"></img>
+                      <div className="row px-2">
+                        <span className="fw-bold d-block">Samuel Sushi</span>
+                        <span className="d-block">Transfer</span>
+                      </div>
+                      <span className="d-block my-auto">+Rp.50.000</span>
+                    </div>
+                    <div className="d-flex justify-content-between pt-4 h-100">
+                      <img src="/homeOrIndex/history-dashboard.png"></img>
+                      <div className="row px-2">
+                        <span className="fw-bold d-block">Netflix</span>
+                        <span className="d-block">Subscription</span>
+                      </div>
+                      <span className="d-block my-auto">-Rp.149.000</span>
+                    </div>
+                    <div className="d-flex justify-content-between pt-4 h-100">
+                      <img src="/homeOrIndex/rectangle33.png"></img>
+                      <div className="row px-2">
+                        <span className="fw-bold d-block">Christine</span>
+                        <span className="d-block">Transfer</span>
+                      </div>
+                      <span className="d-block my-auto">-Rp.150.000</span>
+                    </div>
+                    <div className="d-flex justify-content-between pt-4 h-100">
+                      <img src="/homeOrIndex/adobe_icon.png"></img>
+                      <div className="row px-2">
+                        <span className="fw-bold d-block">Adobe Inc</span>
+                        <span className="d-block">Subscription</span>
+                      </div>
+                      <span className="d-block my-auto">-Rp.249.000</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

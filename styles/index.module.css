@@ -12,6 +12,10 @@
   color: white;
 }
 
+.homeContentMinHeight {
+  height: fit-content !important;
+}
+
 .whiteBackgroundWithBorderRadius {
   background-color: white;
   border-radius: 25px;
