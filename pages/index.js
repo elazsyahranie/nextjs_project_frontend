@@ -41,55 +41,57 @@ export default function Home(props) {
         <div className={`container py-5`}>
           <div className={`row justify-content-between`}>
             <div
-              className={`${styles.whiteBackgroundWithBorderRadius} col-lg-3 col-md-3 col-sm-3 col-xs-12  ${styles.homeContentMinHeight}`}
+              className={` col-lg-3 col-md-6 col-sm-12 col-xs-12  ${styles.homeContentMinHeight}`}
             >
-              <div className="row py-5 px-4 w-100">
-                <div>
-                  <img src="/homeOrIndex/grid.png"></img>
-                  <span className="ms-5">Dashboard</span>
+              <div className={`${styles.whiteBackgroundWithBorderRadius}`}>
+                <div className="row py-5 px-4 w-100">
+                  <div>
+                    <img src="/homeOrIndex/grid.png"></img>
+                    <span className="ms-4">Dashboard</span>
+                  </div>
                 </div>
-              </div>
-              <div className="row pb-5 px-4 w-100">
-                <div>
-                  <img src="/homeOrIndex/arrow-up.png"></img>
-                  <span className="ms-5">Transfer</span>
+                <div className="row pb-5 px-4 w-100">
+                  <div>
+                    <img src="/homeOrIndex/arrow-up.png"></img>
+                    <span className="ms-4">Transfer</span>
+                  </div>
                 </div>
-              </div>
-              <div className="row pb-5 px-4 w-100">
-                <div>
-                  <img src="/homeOrIndex/plus.png"></img>
-                  <span className="ms-5">Top Up</span>
+                <div className="row pb-5 px-4 w-100">
+                  <div>
+                    <img src="/homeOrIndex/plus.png"></img>
+                    <span className="ms-4">Top Up</span>
+                  </div>
                 </div>
-              </div>
-              <div className="row pb-5 px-4 w-100">
-                <div>
-                  <img src="/homeOrIndex/group40.png"></img>
-                  <span className="ms-5">Profile</span>
+                <div className="row pb-5 px-4 w-100">
+                  <div>
+                    <img src="/homeOrIndex/group40.png"></img>
+                    <span className="ms-4">Profile</span>
+                  </div>
                 </div>
               </div>
             </div>
-            <div className={`col-lg-9 col-md-9 col-sm-9 col-xs-12`}>
+            <div className={`col-lg-9 col-md-6 col-sm-9 col-xs-12`}>
               <div className={`${styles.blueBackgroundWithBorderRadius}`}>
                 <div className="row justify-content-between p-4">
                   <div
-                    className={`col-lg-5 col-md-5 col-sm-5 col-xs-5 ${styles.whiteText}`}
+                    className={`col-lg-5 col-md-12 col-sm-12 col-xs-5 ${styles.whiteText}`}
                   >
                     <span className="d-block">Balance</span>
                     <h2>Rp. 120,000</h2>
                     <span className="d-block">+62 813-9387-7946</span>
                   </div>
                   <div
-                    className={`col-lg-3 col-md-3 col-sm-3 col-xs-3 d-flex align-content-between flex-wrap ${styles.whiteText} ${styles.whiteText}`}
+                    className={`col-lg-3 col-md-12 col-sm-12 col-xs-3 d-flex align-content-between flex-wrap ${styles.whiteText} ${styles.whiteText}`}
                   >
                     <button
                       type="submit"
-                      className={`btn ${styles.myTransparentButton} d-block`}
+                      className={`btn ${styles.transferTopUpSmaller} ${styles.myTransparentButton} d-block`}
                     >
                       Transfer
                     </button>
                     <button
                       type="submit"
-                      className={`btn ${styles.myTransparentButton} d-block`}
+                      className={`btn ${styles.transferTopUpSmaller} ${styles.myTransparentButton} d-block`}
                     >
                       Top Up
                     </button>
@@ -97,7 +99,7 @@ export default function Home(props) {
                 </div>
               </div>
               <div className="row mt-4">
-                <div className={`col-lg-7 col-md-7 col-sm-7 col-xs-7 p-4 `}>
+                <div className={`col-lg-7 col-md-12 col-sm-7 col-xs-7 p-4 `}>
                   <div
                     className={`row p-4 ${styles.whiteBackgroundWithBorderRadius}`}
                   >
@@ -113,7 +115,7 @@ export default function Home(props) {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-5 col-md-5 col-sm-5 col-xs-4 p-4">
+                <div className="col-lg-5 col-md-12 col-sm-5 col-xs-4 p-4">
                   <div
                     className={`row px-2 py-4 ${styles.whiteBackgroundWithBorderRadius}`}
                   >

@@ -37,6 +37,18 @@
 .color {
   color: #f1f1f1;
 }
+
+@media (max-width: 991.98px) {
+  .whiteBackgroundWithBorderRadius {
+    margin-bottom: 3rem;
+  }
+
+  .transferTopUpSmaller {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
 /* 
 .standardButton {
   width: 28px;
