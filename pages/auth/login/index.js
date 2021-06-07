@@ -4,6 +4,7 @@ import Cookie from "js-cookie";
 import Layout from "../../../components/Layout";
 import styles from "../../../styles/Login.module.css";
 import { unauthPage } from "../../../middleware/authorizationPage";
+import axios from "axios";
 
 export async function getServerSideProps(context) {
   await unauthPage(context);
@@ -11,18 +12,30 @@ export async function getServerSideProps(context) {
 }
 
 export default function Login() {
-  // const router = useRouter();
-  // const [form, setForm] = useState({ userEmail: "", userPassword: "" });
+  const router = useRouter();
+  const [form, setForm] = useState({ userEmail: "", userPassword: "" });
 
-  // const handleLogin = (event) => {
-  //   event.preventDefault(); // mencegah reload halaman karena onsubmit
-  //   const data = {
-  //     user_id: 1,
-  //   };
-  //   Cookie.set("token", "TestingToken", { expires: 7, secure: true });
-  //   Cookie.set("user", data.user_id, { expires: 7, secure: true });
-  //   router.push("/");
-  // };
+  const changeText = (event) => {
+    // console.log(event.target.value);
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
+
+  const handleLogin = (event) => {
+    event.preventDefault(); // mencegah reload halaman karena onsubmit
+    console.log(form);
+    axios
+      .post(`http://localhost:3003/api/v1/auth/login`, { ...form })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        Cookie.set("user", form.userEmail, {
+          expires: 7,
+          secure: true,
+        });
+        Cookie.set("password", form.userPassword, { expires: 7, secure: true });
+        router.push("/");
+      });
+  };
 
   return (
     <Layout title="Login">
@@ -72,6 +85,8 @@ export default function Login() {
                     class={`form-control py-2 ${styles.myFormControl}`}
                     aria-describedby="emailHelp"
                     placeholder="Enter your email"
+                    onChange={(event) => changeText(event)}
+                    name="userEmail"
                   ></input>
                 </div>
                 <div
@@ -82,12 +97,14 @@ export default function Login() {
                     type="password"
                     class={`form-control py-2 ${styles.myFormControl}`}
                     placeholder="Enter your password"
+                    onChange={(event) => changeText(event)}
+                    name="userPassword"
                   ></input>
                 </div>
                 <button
                   type="submit"
                   className={`btn  ${styles.btnLogin} w-100`}
-                  onClick={(e) => this.saveKonfigElementHandler(e)}
+                  onClick={handleLogin}
                 >
                   Submit
                 </button>

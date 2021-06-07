@@ -1,7 +1,34 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+import Cookie from "js-cookie";
+import axios from "axios";
 import Layout from "../../../components/Layout";
 import styles from "../../../styles/Login.module.css";
 
 export default function Register() {
+  const router = useRouter();
+  const [form, setForm] = useState({
+    userName: "",
+    userEmail: "",
+    userPassword: "",
+  });
+
+  const changeText = (event) => {
+    // console.log(event.target.value);
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
+
+  const handleRegister = (event) => {
+    event.preventDefault(); // mencegah reload halaman karena onsubmit
+    console.log(form);
+    axios
+      .post(`http://localhost:3003/api/v1/auth/register`, { ...form })
+      .then((res) => {
+        console.log(res);
+        console.log(res.data);
+        router.push("/login");
+      });
+  };
   return (
     <Layout title="Register">
       <>
@@ -49,6 +76,8 @@ export default function Register() {
                     type="text"
                     class={`form-control py-2 ${styles.myFormControl}`}
                     aria-describedby="emailHelp"
+                    onChange={(event) => changeText(event)}
+                    name="userName"
                     placeholder="Enter your username"
                   ></input>
                 </div>
@@ -60,6 +89,8 @@ export default function Register() {
                     type="email"
                     class={`form-control py-2 ${styles.myFormControl}`}
                     aria-describedby="emailHelp"
+                    onChange={(event) => changeText(event)}
+                    name="userEmail"
                     placeholder="Enter your email"
                   ></input>
                 </div>
@@ -70,12 +101,15 @@ export default function Register() {
                   <input
                     type="password"
                     class={`form-control py-2 ${styles.myFormControl}`}
+                    onChange={(event) => changeText(event)}
+                    name="userPassword"
                     placeholder="Enter your password"
                   ></input>
                 </div>
                 <button
                   type="submit"
                   className={`btn  ${styles.btnLogin} w-100`}
+                  onClick={handleRegister}
                 >
                   Sign Up
                 </button>
