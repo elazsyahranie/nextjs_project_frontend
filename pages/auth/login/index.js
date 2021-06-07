@@ -11,18 +11,18 @@ export async function getServerSideProps(context) {
 }
 
 export default function Login() {
-  const router = useRouter();
-  const [form, setForm] = useState({ userEmail: "", userPassword: "" });
+  // const router = useRouter();
+  // const [form, setForm] = useState({ userEmail: "", userPassword: "" });
 
-  const handleLogin = (event) => {
-    event.preventDefault(); // mencegah reload halaman karena onsubmit
-    const data = {
-      user_id: 1,
-    };
-    Cookie.set("token", "TestingToken", { expires: 7, secure: true });
-    Cookie.set("user", data.user_id, { expires: 7, secure: true });
-    router.push("/");
-  };
+  // const handleLogin = (event) => {
+  //   event.preventDefault(); // mencegah reload halaman karena onsubmit
+  //   const data = {
+  //     user_id: 1,
+  //   };
+  //   Cookie.set("token", "TestingToken", { expires: 7, secure: true });
+  //   Cookie.set("user", data.user_id, { expires: 7, secure: true });
+  //   router.push("/");
+  // };
 
   return (
     <Layout title="Login">
@@ -87,6 +87,7 @@ export default function Login() {
                 <button
                   type="submit"
                   className={`btn  ${styles.btnLogin} w-100`}
+                  onClick={(e) => this.saveKonfigElementHandler(e)}
                 >
                   Submit
                 </button>
