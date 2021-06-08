@@ -1,7 +1,7 @@
 module.exports = {
   env: {
     APP_NAME: "Z-Wallet",
-    BASE_URL: "http://localhost:3004/backend4/api/v1",
+    BASE_URL: "http://localhost:3003/api/v1",
   },
   async rewrites() {
     return [

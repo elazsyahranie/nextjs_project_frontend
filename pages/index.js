@@ -5,38 +5,41 @@ import Navbar from "../components/module/Navbar";
 import styles from "../styles/index.module.css";
 import { authPage } from "../middleware/authorizationPage";
 import Footer from "../components/module/Footer";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 // Proses getData dilakukan di server
-// export async function getServerSideProps(context) {
-//   const data = await authPage(context); // Untuk halaman yang harus login dulu (katanya)
-//   console.log(data);
-//   const res = await axiosApiIntances
-//     .get("users")
-//     .then((res) => {
-//       console.log(res.data);
-//       return res.data; // return kalau hanya satu baris
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       return [];
-//     });
+export async function getServerSideProps(context) {
+  const data = await authPage(context); // Untuk halaman yang harus login dulu (katanya)
+  console.log(data);
+  const res = await axiosApiIntances
+    .get(`auth/${data.user}`)
+    .then((res) => {
+      console.log(res.data);
+      return res.data; // return kalau hanya satu baris
+    })
+    .catch((err) => {
+      console.log(err);
+      return [];
+    });
 
-//   // Menjembatani 'getServerSideProps' dan....
-//   return {
-//     props: { users: res, userLogin: data }, // will be passed to the page component as props
-//   };
-// }
+  // Menjembatani 'getServerSideProps' dan....
+  return {
+    props: { users: res, userLogin: data }, // will be passed to the page component as props
+  };
+}
 
 // Data yang dilempar akan masuk ke props
 export default function Home(props) {
-  console.log(props);
+  // console.log(props);
   const [users, setUser] = useState(props.users);
-
+  console.log(props.users.data[0]);
+  console.log(props.users.data[0].user_name);
   return (
     <>
       <Layout title="Home">
         <div className={`${styles.whiteBackground}`}>
-          <Navbar />
+          <Navbar data={props.users.data[0]} />
         </div>
         <div className={`container py-5`}>
           <div className={`row justify-content-between`}>

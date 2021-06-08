@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosApiIntances = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com/",
+  baseURL: "http://localhost:3003/api/v1/",
 });
 
 export default axiosApiIntances;

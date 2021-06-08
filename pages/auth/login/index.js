@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import Cookie from "js-cookie";
+import Cookies from "js-cookie";
 import Layout from "../../../components/Layout";
 import styles from "../../../styles/Login.module.css";
 import { unauthPage } from "../../../middleware/authorizationPage";
@@ -28,11 +28,16 @@ export default function Login() {
       .then((res) => {
         console.log(res);
         console.log(res.data);
-        Cookie.set("user", form.userEmail, {
+        // // ambil id
+        Cookies.set("user_id", res.data.data.user_id, {
           expires: 7,
           secure: true,
         });
-        Cookie.set("password", form.userPassword, { expires: 7, secure: true });
+        Cookies.set("token", res.data.data.token, {
+          expires: 7,
+          secure: true,
+        });
+        // // yang di simpan adalah token dan user id
         router.push(`/`);
       });
   };

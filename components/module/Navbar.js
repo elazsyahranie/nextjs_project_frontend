@@ -4,7 +4,9 @@ import Cookie from "js-cookie";
 import Image from "next/image";
 import navbarStyle from "../../styles/navbar.module.css";
 
-export default function Navbar() {
+// Data yang dilempar dari halaman pages/index.js harus di tangkap dulu
+// Kalau yang ini ya cara untuk di functional component
+export default function Navbar(props) {
   const router = useRouter();
 
   const handleLogout = () => {
@@ -12,6 +14,8 @@ export default function Navbar() {
     Cookie.remove("user");
     router.push("/login"); // Kalau pakai query param, jadikan template literals
   };
+
+  console.log(props.data);
   return (
     <>
       <div className="container py-4">
@@ -25,8 +29,8 @@ export default function Navbar() {
                 <img src="/navbarImg/bell_icon.png"></img>
               </div>
               <div className="mx-4">
-                <span className="fw-bold d-block">Robert Chandler</span>
-                <span className="d-block">+62 8139 3877 7946</span>
+                <span className="fw-bold d-block">{props.data.user_name}</span>
+                <span className="d-block">{props.data.user_phone}</span>
               </div>
               <div>
                 <img src="/navbarImg/rectangle25.png"></img>

@@ -21,7 +21,7 @@ export function authPage(context) {
     }
     return resolve({
       token: allCookies.token,
-      user: allCookies.user,
+      user: allCookies.user_id,
     });
   });
 }

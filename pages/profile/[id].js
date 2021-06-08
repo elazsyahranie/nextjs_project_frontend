@@ -24,7 +24,7 @@ export async function getServerSideProps(context) {
 
 export default function Profile(props) {
   const [user, setUser] = useState(props.user);
-  console.log(props.user);
+  console.log(props.user.data[0]);
 
   return (
     <Layout title="Profile">
