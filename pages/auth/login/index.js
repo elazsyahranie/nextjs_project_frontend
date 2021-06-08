@@ -33,7 +33,7 @@ export default function Login() {
           secure: true,
         });
         Cookie.set("password", form.userPassword, { expires: 7, secure: true });
-        router.push("/");
+        router.push(`/`);
       });
   };
 
