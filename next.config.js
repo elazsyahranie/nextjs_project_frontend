@@ -15,8 +15,8 @@ module.exports = {
         destination: "/auth/register", // lokasi path
       },
       {
-        source: "/haveLoggedIn", // pengganti path pada react js
-        destination: "/auth/haveLoggedIn/haveLoggedIn", // lokasi path
+        source: "/editprofile",
+        destination: "/userprofile/editprofile",
       },
     ];
   },

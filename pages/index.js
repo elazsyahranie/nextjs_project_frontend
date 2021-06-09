@@ -6,6 +6,7 @@ import styles from "../styles/index.module.css";
 import { authPage } from "../middleware/authorizationPage";
 import Footer from "../components/module/Footer";
 import Cookies from "js-cookie";
+import { useRouter } from "next/router";
 import axios from "axios";
 
 // Proses getData dilakukan di server
@@ -29,8 +30,20 @@ export async function getServerSideProps(context) {
   };
 }
 
+const handleLogout = () => {
+  Cookies.remove("token");
+  Cookies.remove("user_id");
+  history.push("/login");
+};
+
 // Data yang dilempar akan masuk ke props
 export default function Home(props) {
+  const router = useRouter();
+  const handleLogout = () => {
+    Cookies.remove("token");
+    Cookies.remove("user_id");
+    router.push("/login");
+  };
   // console.log(props);
   const [users, setUser] = useState(props.users);
   console.log(props.users.data[0]);
@@ -69,6 +82,18 @@ export default function Home(props) {
                   <div>
                     <img src="/homeOrIndex/group40.png"></img>
                     <span className="ms-4">Profile</span>
+                  </div>
+                </div>
+                <div className="row pb-5 px-4 w-100">
+                  <div>
+                    <img src="/homeOrIndex/logOut.png"></img>
+                    <button
+                      className={`ms-4 ${styles.superTransparentButton}`}
+                      type="submit"
+                      onClick={handleLogout}
+                    >
+                      Log Out
+                    </button>
                   </div>
                 </div>
               </div>

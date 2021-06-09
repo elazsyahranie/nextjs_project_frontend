@@ -8,7 +8,7 @@ import axios from "axios";
 
 export async function getServerSideProps(context) {
   await unauthPage(context);
-  return { props: {} };
+  return { props: {} }; // untuk halaman yang ga perlu login
 }
 
 export default function Login() {
