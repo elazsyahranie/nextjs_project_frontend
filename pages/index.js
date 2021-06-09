@@ -127,7 +127,7 @@ export default function Home(props) {
                 </div>
               </div>
               <div className="row mt-4">
-                <div className={`col-lg-7 col-md-12 col-sm-7 col-xs-7 p-4 `}>
+                <div className={`col-lg-7 col-md-12 col-sm-12 col-xs-12 p-4 `}>
                   <div
                     className={`row p-4 ${styles.whiteBackgroundWithBorderRadius}`}
                   >
@@ -143,7 +143,7 @@ export default function Home(props) {
                     </div>
                   </div>
                 </div>
-                <div className="col-lg-5 col-md-12 col-sm-5 col-xs-4 p-4">
+                <div className="col-lg-5 col-md-12 col-sm-12 col-xs-12 p-4">
                   <div
                     className={`row px-2 py-4 ${styles.whiteBackgroundWithBorderRadius}`}
                   >

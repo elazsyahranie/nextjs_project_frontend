@@ -116,7 +116,7 @@ export default function Home(props) {
                 </div>
               </div>
             </div>
-            <div className={`col-lg-9 col-md-6 col-sm-9 col-xs-12`}>
+            <div className={`col-lg-9 col-md-6 col-sm-12 col-xs-12`}>
               <div
                 className={`row p-4 ${styles.whiteBackgroundWithBorderRadius}`}
               >
