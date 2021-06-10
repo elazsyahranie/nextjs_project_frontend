@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
-import Layout from "../../../components/Layout";
-import styles from "../../../styles/Login.module.css";
+import Layout from "/components/Layout";
+import styles from "/styles/Login.module.css";
 import { unauthPage } from "../../../middleware/authorizationPage";
 import axios from "axios";
 

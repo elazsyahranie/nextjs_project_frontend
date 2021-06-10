@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Cookie from "js-cookie";
-import axios from "axios";
+import axiosApiIntances from "utils/axios";
 import Layout from "../../../components/Layout";
 import styles from "../../../styles/Login.module.css";
 
@@ -21,13 +21,11 @@ export default function Register() {
   const handleRegister = (event) => {
     event.preventDefault(); // mencegah reload halaman karena onsubmit
     console.log(form);
-    axios
-      .post(`http://localhost:3003/api/v1/auth/register`, { ...form })
-      .then((res) => {
-        console.log(res);
-        console.log(res.data);
-        router.push("/login");
-      });
+    axiosApiIntances.post(`auth/register`, { ...form }).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      router.push("/login");
+    });
   };
   return (
     <Layout title="Register">

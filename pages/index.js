@@ -16,15 +16,17 @@ export async function getServerSideProps(context) {
   const res = await axiosApiIntances
     .get(`auth/${data.user}`)
     .then((res) => {
-      console.log(res.data);
+      // console.log(res.data);
       return res.data; // return kalau hanya satu baris
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
       return [];
     });
 
-  // Menjembatani 'getServerSideProps' dan....
+  // console.log(getBalance.result);
+
+  // Menjembatani 'getServerSideProps' dan halaman yang ditampilkan di browser
   return {
     props: { users: res, userLogin: data }, // will be passed to the page component as props
   };
@@ -46,8 +48,10 @@ export default function Home(props) {
   };
   // console.log(props);
   const [users, setUser] = useState(props.users);
-  console.log(props.users.data[0]);
-  console.log(props.users.data[0].user_name);
+  // console.log(props.users.data[0]);
+  // console.log(props.users.data[0].user_name);
+  console.log(props.users);
+  console.log(props);
   return (
     <>
       <Layout title="Home">

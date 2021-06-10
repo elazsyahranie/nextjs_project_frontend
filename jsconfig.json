@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "baseUrl": "."
+  }
+}
+
+// Untuk mempermudah dalam meng-import gambar dan element lainnya.
+// Jadi ga usah pakai '../../' lagi. Karena proses pencariannya dari bagian paling luar folder 
+
+

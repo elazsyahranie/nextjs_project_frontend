@@ -53,7 +53,7 @@ export default function Home(props) {
   const handleChange = (event) => {
     event.preventDefault();
     console.log(form);
-    axiosApiIntances.patch(`auth/${userId}`).then((res) => {
+    axiosApiIntances.patch(`auth/${userId}`, { ...form }).then((res) => {
       console.log(res);
       console.log(res.data);
       // router.push(`/login`);
