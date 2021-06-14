@@ -5,6 +5,15 @@ import {
   decreaseCounter,
   resetCounter,
 } from "../redux/actions/counter";
+import { initializeStore } from "redux/store";
+
+export async function getStaticProps() {
+  const reduxStore = initializeStore();
+  const { dispatch } = reduxStore;
+  dispatch(increaseCounter());
+  // console.log(reduxStore.getState());
+  return { props: { initialReduxState: reduxStore.getState() } };
+}
 
 function Counter(props) {
   return (

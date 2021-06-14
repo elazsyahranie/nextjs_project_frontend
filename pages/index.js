@@ -109,8 +109,10 @@ export default function Home(props) {
                     className={`col-lg-5 col-md-12 col-sm-12 col-xs-5 ${styles.whiteText}`}
                   >
                     <span className="d-block">Balance</span>
-                    <h2>Rp. 120,000</h2>
-                    <span className="d-block">+62 813-9387-7946</span>
+                    <h2>Rp{props.users.data[0].balance.toLocaleString()}</h2>
+                    <span className="d-block">
+                      {props.users.data[0].user_phone}
+                    </span>
                   </div>
                   <div
                     className={`col-lg-3 col-md-12 col-sm-12 col-xs-3 d-flex align-content-between flex-wrap ${styles.whiteText} ${styles.whiteText}`}

@@ -1,7 +1,3 @@
-import { createStore, applyMiddleware } from "redux";
-import logger from "redux-logger";
-import promiseMiddleware from "redux-promise-middleware";
-import rootReducer from "./reducer";
 import { composeWithDevTools } from "redux-devtools-extension";
 import { useMemo } from "react";
 
