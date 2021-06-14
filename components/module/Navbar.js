@@ -9,13 +9,7 @@ import navbarStyle from "../../styles/navbar.module.css";
 export default function Navbar(props) {
   const router = useRouter();
 
-  const handleLogout = () => {
-    Cookie.remove("token");
-    Cookie.remove("user");
-    router.push("/login"); // Kalau pakai query param, jadikan template literals
-  };
-
-  console.log(props.data);
+  // console.log(props.data);
   return (
     <>
       <div className="container py-4">

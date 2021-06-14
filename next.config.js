@@ -18,6 +18,10 @@ module.exports = {
         source: "/editprofile",
         destination: "/userprofile/editprofile",
       },
+      {
+        source: "/transfer",
+        destination: "/userprofile/transfer",
+      },
     ];
   },
 };

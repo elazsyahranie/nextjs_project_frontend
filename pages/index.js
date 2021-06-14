@@ -14,7 +14,7 @@ export async function getServerSideProps(context) {
   const data = await authPage(context); // Untuk halaman yang harus login dulu (katanya)
   console.log(data);
   const res = await axiosApiIntances
-    .get(`auth/${data.user}`)
+    .get(`/auth/${data.user}`)
     .then((res) => {
       // console.log(res.data);
       return res.data; // return kalau hanya satu baris
@@ -48,8 +48,7 @@ export default function Home(props) {
   };
   // console.log(props);
   const [users, setUser] = useState(props.users);
-  // console.log(props.users.data[0]);
-  // console.log(props.users.data[0].user_name);
+  console.log(props.users.data[0].user_name);
   console.log(props.users);
   console.log(props);
   return (
