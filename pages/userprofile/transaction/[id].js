@@ -42,13 +42,14 @@ export async function getServerSideProps(context) {
 }
 export default function Transaction(props) {
   console.log(props.users.data[0].user_id);
+  console.log(props.users);
   console.log(props.receiverId);
   console.log(props.receiver.data[0]);
 
   const { user_id, user_name, user_phone } = props.receiver.data[0];
 
   const router = useRouter();
-  const [form, setForm] = useState({
+  const [getReceiver, setGetReceiver] = useState({
     transactionValue: "",
     receiverId: props.users.data[0].user_id,
     senderId: user_id,
@@ -56,14 +57,14 @@ export default function Transaction(props) {
 
   const changeText = (event) => {
     // console.log(event.target.value);
-    setForm({ ...form, [event.target.name]: event.target.value });
+    setGetReceiver({ ...getReceiver, [event.target.name]: event.target.value });
   };
 
   const sendBalance = (event) => {
-    event.preventDefault();
-    console.log(form);
+    // event.preventDefault();
+    console.log(getReceiver);
     axiosApiIntances
-      .post("/transaction/insertransaction", { ...form })
+      .post("/transaction/insertransaction", { ...getReceiver })
       .then((res) => {
         console.log(res);
         return res;
@@ -147,7 +148,7 @@ export default function Transaction(props) {
                     press continue to the next steps.
                   </span>
                 </div>
-                <form className="w-100">
+                <form className="w-100 px-5">
                   <div className="mt-5">
                     <input
                       className="form-control mx-auto"
@@ -168,7 +169,11 @@ export default function Transaction(props) {
                       placeholder="Add some notes"
                     ></input>
                   </div>
-                  <button type="submit" onClick={sendBalance}>
+                  <button
+                    type="submit"
+                    className="btn btn-primary my-4 py-2 w-100"
+                    onClick={sendBalance}
+                  >
                     Continue
                   </button>
                 </form>
