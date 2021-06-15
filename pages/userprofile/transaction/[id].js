@@ -22,15 +22,56 @@ export async function getServerSideProps(context) {
     .catch((err) => {
       return [];
     });
+  const receive = await axiosApiIntances
+    .get(`/auth/${id}`)
+    .then((res) => {
+      console.log(res);
+      return res.data; // return kalau hanya satu baris
+    })
+    .catch((err) => {
+      return [];
+    });
   return {
-    props: { users: res, userLogin: data, receiverId: thisIsId }, // will be passed to the page component as props
+    props: {
+      users: res,
+      userLogin: data,
+      receiverId: thisIsId,
+      receiver: receive,
+    }, // will be passed to the page component as props
   };
 }
 export default function Transaction(props) {
-  console.log(props);
+  console.log(props.users.data[0].user_id);
   console.log(props.receiverId);
+  console.log(props.receiver.data[0]);
+
+  const { user_id, user_name, user_phone } = props.receiver.data[0];
 
   const router = useRouter();
+  const [form, setForm] = useState({
+    transactionValue: "",
+    receiverId: props.users.data[0].user_id,
+    senderId: user_id,
+  });
+
+  const changeText = (event) => {
+    // console.log(event.target.value);
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
+
+  const sendBalance = (event) => {
+    event.preventDefault();
+    console.log(form);
+    axiosApiIntances
+      .post("/transaction/insertransaction", { ...form })
+      .then((res) => {
+        console.log(res);
+        return res;
+      })
+      .catch((err) => {
+        return err;
+      });
+  };
 
   const handleLogout = () => {
     Cookies.remove("token");
@@ -93,8 +134,8 @@ export default function Transaction(props) {
                 <div className="p-4">
                   <h5>Transaction Page</h5>
                   <div className="pt-4 px-4">
-                    <span className="d-block pb-1 fw-bold">Samuel Sushi</span>
-                    <span className="d-block pt-1">Nomor Telepon Di sini</span>
+                    <span className="d-block pb-1 fw-bold">{user_name}</span>
+                    <span className="d-block pt-1">{user_phone}</span>
                   </div>
                 </div>
               </div>
@@ -110,6 +151,8 @@ export default function Transaction(props) {
                   <div className="mt-5">
                     <input
                       className="form-control mx-auto"
+                      onChange={(event) => changeText(event)}
+                      name="transactionValue"
                       placeholder="0.00"
                     ></input>
                   </div>
@@ -121,10 +164,13 @@ export default function Transaction(props) {
                   <div className="mt-5">
                     <input
                       className="form-control mx-auto"
+                      name="notes"
                       placeholder="Add some notes"
                     ></input>
                   </div>
-                  <button>Continue</button>
+                  <button type="submit" onClick={sendBalance}>
+                    Continue
+                  </button>
                 </form>
               </div>
             </div>
