@@ -19,8 +19,8 @@ module.exports = {
         destination: "/userprofile/editprofile",
       },
       {
-        source: "/transfer",
-        destination: "/userprofile/transfer",
+        source: "/searchreceiver",
+        destination: "/userprofile/searchreceiver",
       },
     ];
   },

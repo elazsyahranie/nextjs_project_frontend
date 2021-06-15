@@ -44,6 +44,12 @@
   color: #f1f1f1;
 }
 
+/* Search Receiver Page  */
+.buttonReceiverData {
+  border: none;
+  text-align: start;
+}
+
 @media (max-width: 991.98px) {
   .whiteBackgroundWithBorderRadius {
     margin-bottom: 3rem;

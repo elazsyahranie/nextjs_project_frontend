@@ -9,6 +9,9 @@ import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 
 export async function getServerSideProps(context) {
+  const { id } = context.query;
+  const thisIsId = id;
+  console.log(`This is the ${id}`);
   const data = await authPage(context); // Untuk halaman yang harus login dulu (katanya)
   console.log(data);
   const res = await axiosApiIntances
@@ -20,54 +23,24 @@ export async function getServerSideProps(context) {
       return [];
     });
   return {
-    props: { users: res, userLogin: data }, // will be passed to the page component as props
+    props: { users: res, userLogin: data, receiverId: thisIsId }, // will be passed to the page component as props
   };
 }
-export default function TransferPage(props) {
+export default function Transaction(props) {
+  console.log(props);
+  console.log(props.receiverId);
+
   const router = useRouter();
+
   const handleLogout = () => {
     Cookies.remove("token");
     Cookies.remove("user_id");
     router.push("/login");
   };
-
-  const [form, setForm] = useState({ searchUsername: "" });
-
-  const changeText = (event) => {
-    console.log(event.target.value);
-    setForm({ ...form, [event.target.name]: event.target.value });
-  };
-
-  const [username, setUsername] = useState([]);
-
-  const handleSearchUsername = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault(); // mencegah reload halaman karena onsubmit
-      console.log(form);
-      axiosApiIntances
-        .get(`auth/keyword?keyword=${form.keyword}`)
-        .then((res) => {
-          console.log(res);
-          console.log(res.data.data[0]);
-          setUsername(res.data.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    }
-  };
-
-  const userReceiverData = username;
-  console.log(userReceiverData);
-
-  // const data = ["Array 1", "Array 2", "Aray 3"];
-
-  // const receiverName = props.users.data[0].user_name;
-  // const receiverPhone = props.users.data[0].user_phone;
-
+  console.log(props.users.data[0].balance);
   return (
     <>
-      <Layout title="Transfer">
+      <Layout title="Transaction">
         <div className={`${styles.whiteBackground}`}>
           <Navbar data={props.users.data[0]} />
         </div>
@@ -115,42 +88,47 @@ export default function TransferPage(props) {
                 </div>
               </div>
             </div>
-            <div className={`col-lg-9 col-md-6 col-sm-9 col-xs-12 `}>
-              <div className={`${styles.whiteBackgroundWithBorderRadius}`}>
+            <div className={`col-lg-9 col-md-6 col-sm-9 col-xs-12`}>
+              <div className={`${styles.whiteBackgroundWithBorderRadius} mb-2`}>
                 <div className="p-4">
-                  <h5 className="pb-2">Search Receiver</h5>
-                  <div className="d-flex justify-content-between">
-                    <input
-                      type="text"
-                      className="form-control py-2"
-                      placeholder="Search receiver here"
-                      name="keyword"
-                      id="idSearchInput"
-                      aria-describedby="searchHelp"
-                      onChange={(event) => changeText(event)}
-                      onKeyDown={(event) => handleSearchUsername(event)}
-                    ></input>
+                  <h5>Transaction Page</h5>
+                  <div className="pt-4 px-4">
+                    <span className="d-block pb-1 fw-bold">Samuel Sushi</span>
+                    <span className="d-block pt-1">Nomor Telepon Di sini</span>
                   </div>
                 </div>
               </div>
-              {userReceiverData.map((item, index) => {
-                return (
-                  <div
-                    className={`${styles.whiteBackgroundWithBorderRadius} my-4`}
-                  >
-                    <div className="p-4">
-                      <span key={index} className="d-block fw-bold">
-                        {item.user_name}
-                      </span>
-                    </div>
+              <div className={`${styles.whiteBackgroundWithBorderRadius} mt-2`}>
+                <div className="p-4">
+                  <span>
+                    Type the amount you want to transfer and then
+                    <br />
+                    press continue to the next steps.
+                  </span>
+                </div>
+                <form className="w-100">
+                  <div className="mt-5">
+                    <input
+                      className="form-control mx-auto"
+                      placeholder="0.00"
+                    ></input>
                   </div>
-                );
-              })}
+                  <div className="row mt-3">
+                    <span className="fw-bold text-center">
+                      Rp{props.users.data[0].balance.toLocaleString()} Available
+                    </span>
+                  </div>
+                  <div className="mt-5">
+                    <input
+                      className="form-control mx-auto"
+                      placeholder="Add some notes"
+                    ></input>
+                  </div>
+                  <button>Continue</button>
+                </form>
+              </div>
             </div>
           </div>
-        </div>
-        <div className={`${styles.theFooter}`}>
-          <Footer />
         </div>
       </Layout>
     </>
