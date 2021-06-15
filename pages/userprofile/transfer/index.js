@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Layout from "components/Layout";
 import Navbar from "components/module/Navbar";
 import { authPage } from "middleware/authorizationPage";
@@ -29,6 +30,41 @@ export default function TransferPage(props) {
     Cookies.remove("user_id");
     router.push("/login");
   };
+
+  const [form, setForm] = useState({ searchUsername: "" });
+
+  const changeText = (event) => {
+    console.log(event.target.value);
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
+
+  const [username, setUsername] = useState([]);
+
+  const handleSearchUsername = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault(); // mencegah reload halaman karena onsubmit
+      console.log(form);
+      axiosApiIntances
+        .get(`auth/keyword?keyword=${form.keyword}`)
+        .then((res) => {
+          console.log(res);
+          console.log(res.data.data[0]);
+          setUsername(res.data.data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
+  const userReceiverData = username;
+  console.log(userReceiverData);
+
+  // const data = ["Array 1", "Array 2", "Aray 3"];
+
+  // const receiverName = props.users.data[0].user_name;
+  // const receiverPhone = props.users.data[0].user_phone;
+
   return (
     <>
       <Layout title="Transfer">
@@ -83,15 +119,33 @@ export default function TransferPage(props) {
               <div className={`${styles.whiteBackgroundWithBorderRadius}`}>
                 <div className="p-4">
                   <h5 className="pb-2">Search Receiver</h5>
-                  <input
-                    type="text"
-                    className="form-control py-2"
-                    placeholder="Search receiver here"
-                    id="idSearchInput"
-                    aria-describedby="searchHelp"
-                  ></input>
+                  <div className="d-flex justify-content-between">
+                    <input
+                      type="text"
+                      className="form-control py-2"
+                      placeholder="Search receiver here"
+                      name="keyword"
+                      id="idSearchInput"
+                      aria-describedby="searchHelp"
+                      onChange={(event) => changeText(event)}
+                      onKeyDown={(event) => handleSearchUsername(event)}
+                    ></input>
+                  </div>
                 </div>
               </div>
+              {userReceiverData.map((item, index) => {
+                return (
+                  <div
+                    className={`${styles.whiteBackgroundWithBorderRadius} my-4`}
+                  >
+                    <div className="p-4">
+                      <span key={index} className="d-block fw-bold">
+                        {item.user_name}
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </div>
